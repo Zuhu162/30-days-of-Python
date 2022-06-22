@@ -1,30 +1,31 @@
 class TagCloud:
     def __init__(self):
-        self.__tags = {}
+        self.tags = {}
 
     def add(self, tag):
-        self.__tags[tag.lower()] = self.__tags.get(tag.lower(), 0) + 1
+        self.tags[tag.lower()] = self.tags.get(tag.lower(), 0) + 1
 
     def __getitem__(self, tag):
-        return self.__tags.get(tag.lower(), 0)
+        return self.tags.get(tag.lower(), 0)
 
     def __setitem__(self, tag, count):
-        self.__tags[tag.lower()] = count
+        self.tags[tag.lower()] = count
 
     def __len__(self):
-        return len(self.__tags)
+        return len(self.tags)
 
     def __iter__(self):
-        return iter(self.__tags)
+        count = 0
+        for tag in self.tags:
+            count += 1
+        return count
 
     def __str__(self):
-        return f"cloud properties: {self.__tags}"
+        return f"cloud properties: {self.tags}"
 
 
 cloud = TagCloud()
 cloud.add("density")
 cloud.add("weight")
-cloud.add("volume")
-cloud.add("volume")
 cloud.__setitem__("weight", 50)
-print(cloud.tags["PYTHON"])
+print(cloud)
